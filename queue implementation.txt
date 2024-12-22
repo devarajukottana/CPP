@@ -1,0 +1,86 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Queue {
+public:
+    int* arr;
+    int front;
+    int back;
+    int n;
+
+    // Constructor
+    Queue(int n) {
+        this->n = n;
+        arr = new int[n];
+        front = -1;
+        back = -1;
+    }
+
+    // Push (Enqueue)
+    void push(int x) {
+        if (back == n - 1) {
+            cout << "Queue is overflow" << endl;
+            return;
+        }
+        back++;
+        arr[back] = x;
+        if (front == -1) {
+            front = 0;  // Set front to 0 on the first element
+        }
+    }
+
+    // Pop (Dequeue)
+    void pop() {
+        if (front == -1 || front > back) {
+            cout << "Queue is underflow" << endl;
+            return;
+        }
+        front++;
+    }
+
+    // Peek (Front)
+    int peek() {
+        if (front == -1 || front > back) {
+            cout << "Queue is empty" << endl;
+            return -1;
+        }
+        return arr[front];
+    }
+
+    // Check if the queue is empty
+    bool empty() {
+        return (front == -1 || front > back);
+    }
+
+    // Get the size of the queue
+    int size() {
+        if (empty()) {
+            return 0;
+        }
+        return back - front + 1;
+    }
+
+    // Destructor to release memory
+    ~Queue() {
+        delete[] arr;
+    }
+};
+
+int main() {
+    Queue q(5);  // Create a queue of size 5
+    q.push(10);
+    q.push(20);
+    q.push(30);
+
+    cout << "Front element: " << q.peek() << endl;  // Output: 10
+    cout << "Queue size: " << q.size() << endl;  // Output: 3
+
+    q.pop();  // Remove front element
+
+    cout << "Front element after pop: " << q.peek() << endl;  // Output: 20
+    cout << "Queue size after pop: " << q.size() << endl;  // Output: 2
+
+    cout << "Is queue empty? " << (q.empty() ? "Yes" : "No") << endl;  // Output: No
+
+    return 0;
+}

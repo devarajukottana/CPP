@@ -1,0 +1,99 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+class node
+{
+    public:
+    int data;
+    node* next;
+    node(int val)
+    {
+        data = val;
+        next = NULL;
+    }
+};
+
+void insertAtHead(node* &head, int val)
+{
+    node* n = new node(val);
+    if (head == NULL)
+    {
+        head = n;
+        return;
+    }
+    node* temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = n;
+}
+
+void display(node* head)
+{
+    node* temp = head;
+    while (temp != NULL)
+    {
+        cout << temp->data;
+        if (temp->next != NULL)
+            cout << " -> ";
+        temp = temp->next;
+    }
+    cout << endl;
+}
+
+void reverse(node* &head)
+{
+    node* curr = head;
+    node* prev = NULL;
+    node* next = NULL;
+    while (curr != NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+    head = prev;
+}
+
+void addingOne(node* &head)
+{
+    node* temp = head;
+    int carry = 1; // we are adding one, so the initial carry is 1
+    while (temp != NULL && carry)
+    {
+        int sum = temp->data + carry;
+        temp->data = sum % 10;  // update current node's data
+        carry = sum / 10;  // update carry for next node
+        temp = temp->next;
+    }
+
+    // If there's still carry left after traversing all nodes, add a new node
+    if (carry)
+    {
+        node* newNode = new node(carry);
+        temp->next = newNode;
+    }
+}
+
+int main()
+{
+    node* head = NULL;
+    insertAtHead(head, 1);
+    insertAtHead(head, 2);
+    insertAtHead(head, 3);
+    insertAtHead(head, 4);
+    
+    cout << "Original Linked List: ";
+    display(head);
+
+    reverse(head);  // Reverse the linked list to make the addition easier
+    addingOne(head);  // Add one to the number represented by the linked list
+    reverse(head);  // Reverse the linked list again to restore the original order
+
+    cout << "Linked List after adding one: ";
+    display(head);
+
+    return 0;
+}

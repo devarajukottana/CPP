@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+bool descending(int a, int b)
+{
+    return a>b;
+}
+int main()
+{
+    int n;
+    cin>>n;
+    list<int>li;
+    for(int i=0;i<n;i++)
+    {
+        int k;
+        cin>>k;
+        li.push_back(k);
+    }
+   li.sort(descending);
+    for(int i:li)
+    {
+        cout<<i<<" ";
+    }
+    return 0;
+}

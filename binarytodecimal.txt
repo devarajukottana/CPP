@@ -1,0 +1,26 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+
+using namespace std;
+
+int main()
+{
+    vector <int> vec;
+    int n;
+    int rem=0;
+    cin>>n;
+    while(n>0)
+    {
+        rem=n%2;
+        vec.push_back(rem);
+        n=n/2;
+    }
+    reverse(vec.begin(),vec.end());
+    for(int i:vec)
+    {
+        cout<<i<<" ";
+    }
+    return 0;
+    
+}

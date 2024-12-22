@@ -1,0 +1,46 @@
+//in the array give the elements count and the elements that the xors equal to the target .
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n; // Input the size of the array
+    vector<int> vec(n);
+
+    // Input the array elements
+    for (int i = 0; i < n; i++) {
+        cin >> vec[i];
+    }
+    cout<<" enter the target";
+    int target;
+    cin>>target;
+
+    int count = 0;
+
+    // Iterate over all possible subarrays
+    for (int i = 0; i < n; i++) {
+        int xor_sum = 0; // Initialize XOR for the subarray starting at index i
+        vector<int>p;
+        for (int j = i; j < n; j++) {
+            xor_sum ^= vec[j]; // Compute XOR of the current subarray
+            p.push_back(vec[j]);
+            if (xor_sum == target) {
+                count++;
+                // Print the subarray elements
+                cout<<"{";
+               for(int i:p)
+               {
+                   cout<<i<<" ";
+               }
+               cout<<"}";
+               cout<<endl;
+                
+            }
+        }
+        p.clear();
+    }
+
+    cout << "Total count of subarrays with XOR = 6: " << count << endl;
+
+    return 0;
+}

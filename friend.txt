@@ -1,0 +1,29 @@
+#include<iostream>
+using namespace std;
+class B;
+class A 
+{
+int x;
+int y;
+public:
+void display()
+{
+cout<<"the class A "<<endl;
+}
+friend class B;
+};
+class B
+{
+
+void display1(A &a)
+{
+cout<<"the addition of two numbers"<<a.x+a.y<<endl;
+}
+};
+
+int main()
+{
+A a;
+B b;
+b.display();
+return 0;

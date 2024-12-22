@@ -1,0 +1,34 @@
+//finding missing element and repeating element;
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n1;
+    cin>>n1;
+    vector<int>v1;
+    map<int,int>m;
+    for(int i=0;i<n1;i++)
+    {
+        int k;
+        cin>>k;
+        v1.push_back(k);
+    }
+    int vis[n1+1]={0};
+    for(int i=0;i<n1;i++)
+    {
+     vis[v1[i]]++;   
+    }
+    for(int i=1;i<n1;i++)
+    {
+        if(vis[i]==2)
+        {
+            cout<<" repeating element"<<i;
+        }
+        else if(vis[i]==0)
+        {
+            cout<<"missing element"<<i;
+        }
+    }
+    
+    
+}

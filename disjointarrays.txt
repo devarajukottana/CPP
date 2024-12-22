@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+int disjoint(int arr1[],int arr2[],int n1,int n2)
+{
+    for(int i=0;i<n1;i++)
+    {
+        for(int j=0;j<n2;j++)
+        {
+            if(arr1[i]==arr2[j])
+            {
+                return 0;
+            }
+        }
+    }
+    return 1;
+}
+int main()
+{
+    int n1;
+    cin>>n1;
+    int n2;
+    int* arr1=new int[n1];
+    for(int i=0;i<n1;i++)
+    {
+        cin>>arr1[i];
+    }
+    cin>>n2;
+    int* arr2=new int[n2];
+    for(int i=0;i<n2;i++)
+    {
+        cin>>arr2[i];
+    }
+    if(disjoint(arr1,arr2,n1,n2))
+    {
+        cout<<"this is a disjoint";
+    }
+    else
+    {
+        cout<<"not a disjoint";
+    }
+    
+    
+}

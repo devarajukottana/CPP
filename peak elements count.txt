@@ -1,0 +1,26 @@
+//find the first and last occurances of a element;
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"enter the size";
+    cin>>n;
+    cout<<"enter the elements";
+    vector<int>v;
+    for(int i=0;i<n;i++)
+    {
+        int k;
+        cin>>k;
+        v.push_back(k);
+    }
+    int count=0;
+    for(int i=0;i<n;i++)
+    {
+        if((v[i]==0 || v[i-1]<v[i]) && (v[i]==n-1 || v[i]>v[i+1]))
+        {
+            count+=1;
+        }
+    }
+    cout<<count;
+}

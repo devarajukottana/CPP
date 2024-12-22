@@ -1,0 +1,26 @@
+//find the first and last occurances of a element;
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    cout<<"enter the target";
+    int target;
+    cin>>target;
+    int low=1;
+    int high=target;
+    int ans;
+    while(low<=high)
+    {
+        int mid=(low+high)/2;
+        if(mid*mid<=target)
+        {
+           ans=mid;
+           low=mid+1;
+        }
+        else
+        {
+            high=mid-1;
+        }
+    }
+    cout<<ans;
+}

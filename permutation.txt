@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+void permute(string str,string answer)
+{
+    if(str.length()==0)
+    {
+        cout<<answer<<endl;
+    }
+    else
+    {
+        for(int i=0;i<str.length();i++)
+        {
+            char ch=str[i];
+            string left=str.substr(0,i);
+            string right=str.substr(i+1);
+            string result=left+right;
+            permute(result,answer+ch);
+        }
+    }
+}
+int main()
+{
+    string str;
+    cin>>str;
+    string answer="";
+    permute(str,answer);
+}

@@ -1,0 +1,18 @@
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int a,b;
+    cin>>a;
+    cin>>b;
+    while(b!=0)
+    {
+        int borrow=(~a) & b;
+        a=a ^ b;
+        b=borrow<<1;
+    }
+    cout<<"the subtraction of a and b is : "<<a<<endl;
+    
+    
+    return 0;
+}

@@ -1,0 +1,44 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    string str;
+    unordered_map<string,int>M;
+    getline(cin,str);
+    int i;
+    string word="";
+    for(int i=0;i<str.size();i++)
+    {
+        
+        if(str[i]==' ')
+        {
+            if(M.find(word)==M.end())
+            {
+                M[word]=1;
+                word="";
+            }
+            else
+            {
+                M[word]++;
+                word="";
+            }
+        }
+        else
+        {
+           word+=str[i]; 
+        }
+    }
+    if(M.find(word)==M.end())
+        {
+            M[word]=1;
+        }
+    else
+    {
+       M[word]++; 
+    }
+    for(auto i: M)
+    {
+        cout<<i.first<<"-"<<i.second<<endl;
+    }
+    
+}

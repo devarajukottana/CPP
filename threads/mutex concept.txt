@@ -1,0 +1,47 @@
+//A mutex (short for mutual exclusion) is a synchronization primitive used to protect shared resources or critical sections in a multi-threaded program, ensuring that only one thread can access the resource at a time. This prevents race conditions and ensures thread safety.
+//Data corruption: If one thread is writing while another is reading or writing, the data may become inconsistent.
+//Race conditions: The program's outcome depends on the sequence or timing of thread execution, leading to unpredictable behavior.
+//Locking (lock):
+		When a thread needs access to a shared resource, it "locks" the mutex.
+		If another thread tries to lock the same mutex, it will block (wait) until the mutex is unlocked.
+
+//Unlocking (unlock):
+		Once the thread finishes its work with the shared resource, it unlocks the mutex.
+		This allows another thread to acquire the mutex and proceed.
+#include <mutex>
+mutex mtx;
+//mtx.lock():
+		Acquires the lock on the mutex. If the mutex is already locked, the thread will block until it is unlocked.
+//mtx.unlock():
+		Releases the lock on the mutex, allowing other threads to acquire it.
+//lock_guard<std::mutex> lock(mtx);	
+		A safer way to manage a mutex, as it automatically unlocks the mutex when the lock_guard object goes out of scope.
+
+code:
+#include <iostream>
+#include <thread>
+#include <mutex>
+using namespace std;
+std::mutex mtx; // Create a mutex
+int shared_data = 0;
+
+void increment(int v) {
+    for (int i = 0; i < 10; ++i) {
+        lock_guard<mutex> lock(mtx);// Lock the mutex
+       cout<<v++<<endl;
+        ++shared_data; // Critical section
+        // Mutex is automatically unlocked when lock_guard goes out of scope
+    }
+}
+
+int main() {
+    std::thread t1(increment,1);
+    std::thread t2(increment,1);
+
+    t1.join();
+    t2.join();
+
+    std::cout << "Final shared_data: " << shared_data << std::endl;
+    return 0;
+}
+

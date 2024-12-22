@@ -1,0 +1,48 @@
+#include <iostream>
+
+struct Node {
+    int data;         // Data stored in the node
+    Node* next;      // Pointer to the next node
+};
+
+class SinglyLinkedList {
+private:
+    Node* head; // Pointer to the head of the list
+
+public:
+    // Constructor initializes head to nullptr
+    SinglyLinkedList() : head(nullptr) {}
+
+    // Insertion at the beginning
+    void insertAtBeginning(int newData) {
+        Node* newNode = new Node(); // Create a new node
+        newNode->data = newData;    // Set its data
+        newNode->next = head;       // Link new node to the old head
+        head = newNode;             // Update head to point to the new node
+    }
+
+    // Method to print the linked list
+    void printList() {
+        Node* current = head;       // Start with the head
+        while (current != nullptr) { // Traverse until the end
+            std::cout << current->data << " -> "; // Print the data
+            current = current->next; // Move to the next node
+        }
+        std::cout << "nullptr" << std::endl; // Indicate the end of the list
+    }
+};
+
+int main() {
+    SinglyLinkedList list; // Create a new SinglyLinkedList
+
+    // Inserting elements at the beginning
+    list.insertAtBeginning(3); // Insert 3 at the beginning
+    list.insertAtBeginning(2); // Insert 2 at the beginning
+    list.insertAtBeginning(1); // Insert 1 at the beginning
+
+    // Print the linked list
+    std::cout << "Singly Linked List: ";
+    list.printList(); // Output the list
+
+    return 0;
+}

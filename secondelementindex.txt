@@ -1,0 +1,35 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"enter the size";
+    cin>>n;
+    cout<<"enter the elements";
+    int* arr=new int[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int ind=0;
+    cout<<"enter the key";
+    int key;
+    cin>>key;
+    for(int i=0;i<n;i++)
+    {
+        if(arr[i]==key)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                if(arr[j]==key)
+                {
+                    ind=j;
+                    break;
+                }
+            }
+            
+        }
+    }
+    cout<<"the second ind is : "<<ind;
+    
+}

@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+class Teacher
+{
+    public:
+    Teacher()
+    {
+        cout<<" the teacher id is 123"<<endl;
+    }
+    virtual void sound()
+    {
+        cout<<" the sound is very high";
+    }
+};
+class Student : public Teacher
+{
+    public:
+    int idee;
+    Student(int id)
+    {
+        this->idee=id;
+    }
+    void sound() override
+    {
+        cout<<"the sound is very low";
+    }
+    
+};
+int main()
+{
+    Teacher *s=new Student(123);
+    s->sound();
+}

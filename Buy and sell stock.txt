@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int>prices;
+    for(int i=0;i<n;i++)
+    {
+        int k;
+        cin>>k;
+        prices.push_back(k);
+    }
+    //logic
+    int buy=-1;
+    int sell=-1;
+    int i=0;
+    int result=0;
+    while(i<n-1)
+    {
+        //buy only when the next element is increased otherwise increment;
+        while(i<n-1 && prices[i]>=prices[i+1])
+        {
+            i++;
+        }
+        buy=prices[i];
+        //sell only when the next element is decreased otherwise dcrement;
+        while(i<n-1 && prices[i]<=prices[i+1])
+        {
+            i++;
+        }
+        sell=prices[i];
+        result+=sell-buy;
+        
+    }
+    cout<<result;
+}

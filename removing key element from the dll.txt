@@ -1,0 +1,98 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class node {
+public:
+    int data;
+    node* next;
+    node* prev;
+    node(int val) {
+        data = val;
+        next = NULL;
+        prev = NULL;
+    }
+};
+
+void inserAthead(node* &head, int val) {
+    node* n = new node(val);
+    if (head != NULL) {
+        n->next = head;
+        head->prev = n;
+    }
+    head = n;
+}
+
+void insertAtEnd(node* &head, int val) {
+    node* n = new node(val);
+    if (head == NULL) {
+        inserAthead(head, val);
+        return;
+    }
+    node* temp = head;
+    while (temp->next != NULL) {
+        temp = temp->next;
+    }
+    temp->next = n;
+    n->prev = temp;
+}
+
+void display(node* head) {
+    node* temp = head;
+    while (temp != NULL) {
+        cout << temp->data << " -> ";
+        temp = temp->next;
+    }
+    cout << "NULL" << endl;
+}
+
+void deleteduplicateelement(node* &head, int key) {
+    node* temp = head;
+    while (temp != NULL) {
+        if (temp->data == key) {
+            // Handle the case where the node to delete is the head
+            if (temp == head) {
+                head = head->next;
+                if (head != NULL) {
+                    head->prev = NULL;
+                }
+                delete temp;
+                temp = head;
+            } else {
+                // General case
+                node* prevnode = temp->prev;
+                node* nextnode = temp->next;
+                if (prevnode != NULL) {
+                    prevnode->next = nextnode;
+                }
+                if (nextnode != NULL) {
+                    nextnode->prev = prevnode;
+                }
+                delete temp;
+                temp = nextnode;
+            }
+        } else {
+            temp = temp->next;
+        }
+    }
+}
+
+int main() {
+    node* head = NULL;
+    insertAtEnd(head, 1);
+    insertAtEnd(head, 3);
+    insertAtEnd(head, 2);
+    insertAtEnd(head, 3);
+    insertAtEnd(head, 4);
+    insertAtEnd(head, 3);
+
+    cout << "Original List: ";
+    display(head);
+
+    int key = 3;
+    deleteduplicateelement(head, key);
+
+    cout << "List after removing duplicates of " << key << ": ";
+    display(head);
+
+    return 0;
+}

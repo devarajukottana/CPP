@@ -1,0 +1,24 @@
+
+//decimal to binary
+#include<bits/stdc++.h>
+using namespace std;
+int decimaltobinary(int num)
+{
+    int sum=0;
+    int pow=1;
+    while(num>0)
+    {
+        int rem = num%2;
+        sum+=(rem*pow);
+        pow*=10;
+        num/=2;
+    }
+    return sum;
+}
+int main()
+{
+    int num;
+    cin>>num;
+    cout<<"the binaray number of "<<num<<" is "<<decimaltobinary(num)<<endl;
+    return 0;
+}

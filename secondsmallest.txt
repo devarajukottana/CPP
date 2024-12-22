@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    priority_queue<int>maxheap;
+    int k;
+    cout<<"kth largest element";
+    cin>>k;
+    for(int i=0;i<n;i++)
+    {
+        int m;
+        cin>>m;
+        maxheap.push(m);
+        if(maxheap.size()>k)
+        {
+            maxheap.pop();
+        }
+    }
+    cout<<maxheap.top();
+    
+}

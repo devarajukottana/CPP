@@ -1,0 +1,76 @@
+//this code is used for the finding the starting element of the loop and also the loop exist or not.
+//this is the hashing technique using map;
+//another method is slow and fast technique that is 
+//the slow and fast must be equal for some time because the distance between fast and the slow is decreased for every loop by 1 at last both are equal 
+#include<bits/stdc++.h>
+using namespace std;
+
+class node
+{
+    public:
+    int data;
+    node* next;
+    node(int val)
+    {
+        data = val;
+        next = NULL;
+    }
+};
+
+void insertAtHead(node* &head, int val)
+{
+    node* n = new node(val);
+    if (head == NULL)
+    {
+        head = n;
+        return;
+    }
+    node* temp = head;
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+    temp->next = n;
+}
+//logic
+bool  checking(node* &head)
+{
+    unordered_map<node*,int> m;
+    node* temp=head;
+    while(temp != NULL)
+    {
+        if(m.find(temp) != m.end())
+        {
+            return true;
+        }
+        m[temp]=1;
+        temp=temp->next;
+    }
+    return false;
+}
+
+
+
+
+
+
+int main()
+{
+    node* head = NULL;
+    insertAtHead(head, 1);
+    insertAtHead(head, 2);
+    insertAtHead(head, 3);
+    insertAtHead(head, 1);
+    
+    if(checking(head))
+    {
+        cout<<"it is a loop";
+    }
+    else
+    {
+        cout<<"it is a not loop";
+    }
+  
+
+    return 0;
+}

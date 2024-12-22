@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+struct Student
+{
+    int roll_no;
+    char gender;
+    string name;
+    float salary;
+}ravi;
+int main()
+{
+    Student deva={6702,'M',"  raju",100000};
+    ravi={6709,'M',"  ravi",10000};
+    Student rani;
+     rani.roll_no=2020;
+     rani.gender='F';
+     rani.name="  meena";
+     rani.salary=50000;
+    cout<<"Deva details:\n"<<deva.roll_no<<" "<<deva.gender<<deva.name<<" "<<deva.salary<<endl;
+    cout<<"Rani details:\n"<<rani.roll_no<<" "<<rani.gender<<" "<<rani.name<<" "<<rani.salary<<endl;
+    cout<<"Ravi details:\n"<<ravi.roll_no<<" "<<ravi.gender<<" "<<ravi.name<<" "<<ravi.salary<<endl;
+    return 0;
+    
+}

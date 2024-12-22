@@ -1,0 +1,43 @@
+//3 sum first sort and then use while loop for matching target;
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"enter size";
+    cin>>n;
+    cout<<"enter elements";
+    vector<int>a;
+    for(int i=0;i<n;i++)
+    {
+        int k;
+        cin>>k;
+        a.push_back(k);
+    }
+    cout<<"enter target";
+    int target;
+    cin>>target;
+    sort(a.begin(),a.end());
+    for(int i=0;i<n;i++)
+    {
+        int lo=a[i]+1;
+        int hi=n-1;
+        while(lo<hi)
+        {
+            int current=a[i]+a[lo]+a[hi];
+            if(current==target)
+            {
+                cout<<a[i]<<" "<<a[lo]<<" "<<a[hi]<<endl;
+                break;
+            }
+            if(current<target)
+            {
+                lo++;
+            }
+            if(current>target)
+            {
+                hi--;
+            }
+        }
+    }
+}

@@ -1,0 +1,49 @@
+//diameter of a tree
+#include<bits/stdc++.h>
+using namespace std;
+struct Node
+{
+    int data;
+    Node* left;
+    Node* right;
+    Node(int x)
+    {
+        data=x;
+        left=nullptr;
+        right=nullptr;
+    }
+};
+class Solution
+{
+    public:
+    int diameterOfTree(Node* root)
+    {
+        int diameter=0;
+        maxDepth(root,diameter);
+        return diameter;
+    }
+    private:
+    int maxDepth(Node* root,int& diameter)
+    {
+        if(root==nullptr)
+        {
+            return 0;
+        }
+        int lh=maxDepth(root->left,diameter);
+        int rh=maxDepth(root->right,diameter);
+        diameter=max(diameter,lh+rh);
+        int result=max(lh,rh) + 1;
+        return result;
+    }
+};
+int main()
+{
+    Node* root=new Node(1);
+    root->left=new Node(2);
+    root->right=new Node(3);
+    root->left->left=new Node(4);
+    root->right->right=new Node(5);
+    Solution s;
+    cout<<"the diameter of a tree is "<<s.diameterOfTree(root);
+    return 0;
+}

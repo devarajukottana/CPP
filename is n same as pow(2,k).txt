@@ -1,0 +1,18 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int k,m;
+    cin>>n;//the number 8
+    cin>>k;//the power
+    if((m & ((1<<k)-1))==0)
+    {
+        cout<<"correct";
+    }
+    else
+    {
+        cout<<"false";
+    }
+    
+    
+}

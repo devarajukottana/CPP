@@ -1,0 +1,41 @@
+#include<bits/stdc++.h>
+using namespace std;
+int Binarysearch(int arr[],int low,int high,int search)
+{
+    if(low>high)
+    {
+        return -1;
+    }
+    int mid=(low+high)/2;
+    if(arr[mid]==search)
+    {
+        return mid;
+    }
+    else if(search<arr[mid])
+    {
+        return Binarysearch(arr,low,mid-1,search);
+    }
+    else
+    {
+        return Binarysearch(arr,mid+1,high,search);
+    }
+}
+int main()
+{
+    int n;
+    cout<<"enter the element size :";
+    cin>>n;
+    int* arr=new int[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int search;
+    cout<<"the search element is : ";
+    cin>>search;
+    int low=0;
+    int high=n-1;
+    int elementfound=Binarysearch(arr,low,high,search);
+    cout<<"the index of an element is : "<<elementfound;
+    return 0;
+}

@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+
+using namespace std;
+int main()
+{
+    string s;
+    getline(cin,s);
+    stringstream ss(s);
+    string str;
+    string result="";
+    while(ss>> str)
+    {
+        if(islower(str[0]))
+        {
+            str[0]=toupper(str[0]);
+        }
+        result+=str+" ";
+        
+    }
+    if(!result.empty())
+    {
+    result.pop_back();
+    }
+    cout<<result;
+    
+}

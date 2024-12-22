@@ -1,0 +1,62 @@
+//here take one vector to store elements and take stack to push into the vector.
+#include <iostream>
+#include <vector>
+#include <stack>
+using namespace std;
+
+// Definition for a binary tree node
+struct TreeNode {
+    int val;
+    TreeNode* left;
+    TreeNode* right;
+
+    // Constructor to initialize a node with a value and optional children
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+};
+
+class Solution {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        vector<int> preorder;
+        if (root == nullptr) return preorder; // Return empty vector if the tree is empty
+        
+        stack<TreeNode*> st;
+        st.push(root); // Push the root node onto the stack
+        
+        while (!st.empty()) {
+            root = st.top(); // Get the node on top of the stack
+            st.pop();        // Remove it from the stack
+            
+            preorder.push_back(root->val); // Add the node's value to the result
+            
+            // Push the right child first so that the left child is processed first
+            if (root->right != nullptr) {
+                st.push(root->right);
+            }
+            if (root->left != nullptr) {
+                st.push(root->left);
+            }
+        }
+        
+        return preorder; // Return the list of values in preorder traversal
+    }
+};
+
+// Example usage
+int main() {
+    // Create a simple binary tree
+    TreeNode* root = new TreeNode(1);
+    root->right = new TreeNode(2);
+    root->right->left = new TreeNode(3);
+
+    Solution sol;
+    vector<int> result = sol.preorderTraversal(root);
+
+    cout << "Preorder Traversal: ";
+    for (int val : result) {
+        cout << val << " ";
+    }
+    cout << endl;
+
+    return 0;
+}

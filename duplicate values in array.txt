@@ -1,0 +1,23 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    list<int>li;//by using the list frequency map is stroing and increasing the value;
+    unordered_map<int,int>M;//unordered map takes the values in a non sorted order;
+    for(int i=0;i<n;i++)
+    {
+        int k;
+        cin>>k;
+        li.push_back(k);
+        M[k]++;//increasing the index value count in map.
+    }
+    for(auto i:M)
+    {
+        if(i.second>1)//i.second means value 
+        {
+            cout<<i.first<<" ";//i.first means key.
+        }
+    }
+}

@@ -1,0 +1,46 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    vector<char> arr;
+    for(int i=0;i<n;i++)
+    {
+        char k;
+        cin>>k;
+        arr.push_back(k);
+    }
+    int idx=0;
+    for(int i=0;i<n;i++)
+    {
+        int count=0;
+        char ch=arr[i];
+        while(i<n && ch==arr[i])
+        {
+            count++,i++;
+        }
+        i--;
+        if(count==1)
+        {
+            arr[idx++]=ch;
+        }
+        else
+        {
+            arr[idx++]=ch;
+            string str=to_string(count);
+            for(char j:str)
+            {
+                arr[idx++]=j;
+            }
+            
+        }
+        
+    }
+    arr.resize(idx);
+    for(char k : arr)
+    {
+        cout<<k<<" ";
+    }
+    return 0;
+}

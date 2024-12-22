@@ -1,0 +1,44 @@
+//intersection of two arrays
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n1;
+    cin>>n1;
+    vector<int>v1;
+    for(int i=0;i<n1;i++)
+    {
+        int k;
+        cin>>k;
+        v1.push_back(k);
+    }
+    int n2;
+    cin>>n2;
+    vector<int>v2;
+    for(int i=0;i<n2;i++)
+    {
+        int k;
+        cin>>k;
+        v2.push_back(k);
+    }
+    int vis[n1]={0};
+    vector<int>temp;
+    for(int i=0;i<n1;i++)
+    {
+        for(int j=0;j<n2;j++)
+        {
+            if(v1[i]==v2[j] && vis[j]!=1)
+            {
+               temp.push_back(v1[i]);
+               vis[j]=1;
+               break;
+            }
+        }
+    }
+    for(int i:temp)
+    {
+        cout<<i<<" ";
+    }
+    
+    
+}

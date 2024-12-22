@@ -1,0 +1,108 @@
+#include<bits/stdc++.h>
+using namespace std;
+class node
+{
+    public:
+    int data;
+    node* next;
+    node(int val)
+    {
+        data=val;
+        next=NULL;
+    }
+};
+void insertAtEnd(node* &head,int val)
+{
+    node* n=new node(val);
+    if(head==NULL)
+    {
+        head=n;
+        return ;
+    }
+    node* temp=head;
+    while(temp->next != NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=n;
+}
+void display(node* head)
+{
+    node* temp=head;
+    while(temp->next != NULL)
+    {
+        cout<<temp->data<<" -> ";
+        temp=temp->next;
+    }
+    cout<<temp->data;
+}
+//logic
+
+node* reversingsecondhalf(node* head)
+{
+    node* prev=NULL;
+    node* curr=head;
+    node* next=NULL;
+    while(curr!=NULL)
+    {
+        next=curr->next;
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+    }
+    return prev;
+}
+
+
+bool ispalindrome(node* head)
+{
+    node* slow=head;
+    node* fast=head;
+    //finding mid;
+    while(fast != NULL && fast->next != NULL)
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+    }
+    //finding secondhead by reversing the second half;
+    node* secondhead=reversingsecondhalf(slow);
+    node* temp=secondhead;
+    if(head==NULL || head->next == NULL)
+    {
+        return true;
+    }
+    while(temp != NULL)
+    {                                                                                                                                                                               
+        if(head->data != temp->data)
+        {
+            return false;
+            break;
+        }
+        else
+        {
+        head=head->next;
+        temp=temp->next;
+        }
+    }
+    return true;
+    
+}
+
+int main()
+{
+    node* head=NULL;
+    insertAtEnd(head,1);
+    insertAtEnd(head,2);
+    insertAtEnd(head,3);
+    insertAtEnd(head,2);
+    insertAtEnd(head,1);
+    display(head);
+    if(ispalindrome(head))
+    {
+        cout<<"the linkedlist is a palindrome";
+    }
+    else
+    {
+        cout<<"the linkedlist is not a palindrome";
+    }
+}

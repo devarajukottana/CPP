@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+class Stack {
+public:
+    int* arr;
+    int topIndex;
+    int n;  // Size of the stack
+
+    // Constructor to initialize stack with size n
+    Stack(int n) {
+        this->n = n;  // Store the stack size
+        arr = new int[n];
+        topIndex = -1;
+    }
+
+    // Function to push a value onto the stack
+    void pushvalue(int x) {
+        if (topIndex == n - 1) {
+            cout << "Stack is overflow" << endl;
+        }
+        topIndex++;
+        arr[topIndex] = x;
+    }
+
+    // Function to pop a value from the stack
+    void popvalue() {
+        if (topIndex == -1) {
+            cout << "Stack is underflow" << endl;
+            
+        }
+        topIndex--;
+    }
+
+    // Function to get the top value of the stack
+    int getTop() {
+        if (topIndex == -1) {
+            cout << "Stack is empty" << endl;
+            return -1;  // Return a sentinel value indicating the stack is empty
+        }
+        return arr[topIndex];
+    }
+
+    // Destructor to free the allocated memory
+    ~Stack() {
+        delete[] arr;
+    }
+};
+
+int main() {
+    Stack st(100);  // Create a stack of size 100
+
+    st.pushvalue(3);
+    st.pushvalue(2);
+    st.pushvalue(5);
+
+    st.popvalue();  // Remove the top element (5)
+    cout << "Top of stack: " << st.getTop() << endl;  // Should print 2
+
+    st.popvalue();  // Remove the top element (2)
+    cout << "Top of stack: " << st.getTop() << endl;  // Should print 3
+
+    return 0;
+}

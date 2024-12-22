@@ -1,0 +1,41 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+// Function to check if a number is a palindrome
+bool palindrome(int num) {
+    int temp = num;
+    int sum = 0;
+    while (num > 0) {
+        int rem = num % 10;
+        sum = sum * 10 + rem;
+        num /= 10;
+    }
+    return sum == temp;
+}
+
+int main() {
+    int n;
+    cin >> n;
+    int* arr = new int[n];
+    
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    
+    int max_palindrome = INT_MIN;
+    
+    for (int i = 0; i < n; i++) {
+        if (palindrome(arr[i]) && arr[i] > max_palindrome) {
+            max_palindrome = arr[i];
+        }
+    }
+    
+    if (max_palindrome != INT_MIN) {
+        cout << "Maximum palindrome number is: " << max_palindrome << endl;
+    } else {
+        cout << "No palindrome number found." << endl;
+    }
+    
+    delete[] arr;
+    return 0;
+}

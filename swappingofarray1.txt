@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n1,n2;
+    cin>>n1;
+    list<int>li1;
+    for(int i=0;i<n1;i++)
+    {
+        int k;
+        cin>>k;
+        li1.push_back(k);
+    }
+    cin>>n2;
+    list<int>li2;
+    for(int i=0;i<n2;i++)
+    {
+        int p;
+        cin>>p;
+        li2.push_back(p);
+    }
+    li1.swap(li2);
+    for(int i:li1)
+    {
+        cout<<i<<" ";
+    }
+    for(int i:li2)
+    {
+        cout<<i<<" ";
+    }
+    return 0;
+}

@@ -1,0 +1,55 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n1;
+    cout << "Enter size of first array: ";
+    cin >> n1;
+    int ar1[n1];
+    cout << "Enter elements of first array: ";
+    for (int i = 0; i < n1; i++) {
+        cin >> ar1[i];
+    }
+
+    int n2;
+    cout << "Enter size of second array: ";
+    cin >> n2;
+    int ar2[n2];
+    cout << "Enter elements of second array: ";
+    for (int i = 0; i < n2; i++) {
+        cin >> ar2[i];
+    }
+
+    // Define the size of the merged array
+    int n3 = n1 + n2;
+    int ar3[n3];
+
+    int i = 0, j = 0, k = 0;
+
+    // Merge the two arrays
+    while (i < n1 && j < n2) {
+        if (ar1[i] <= ar2[j]) {
+            ar3[k++] = ar1[i++];
+        } else {
+            ar3[k++] = ar2[j++];
+        }
+    }
+
+    // Copy remaining elements from ar1 (if any)
+    while (i < n1) {
+        ar3[k++] = ar1[i++];
+    }
+
+    // Copy remaining elements from ar2 (if any)
+    while (j < n2) {
+        ar3[k++] = ar2[j++];
+    }
+
+    // Print the merged array
+    cout << "Merged Sorted Array: ";
+    for (int i = 0; i < n3; i++) {
+        cout << ar3[i] << " ";
+    }
+
+    return 0;
+}

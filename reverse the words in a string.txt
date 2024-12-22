@@ -1,0 +1,39 @@
+//to reverse the words in a string
+#include <bits/stdc++.h>
+using namespace std;
+
+int main() {
+    string s;
+    getline(cin, s);
+    int len = s.length();
+    vector<string> words;
+    string word = "";
+
+    for (int i = 0; i < len; i++) {
+        // Accumulate characters in word until a space is found
+        while (i < len && s[i] != ' ') {
+            word += s[i];
+            i++;
+        }
+        // Push the word into the vector if it's not empty
+        if (!word.empty()) {
+            words.push_back(word);
+            word = "";
+        }
+    }
+
+    // Reverse the order of words
+    reverse(words.begin(), words.end());
+
+    // Output the result, ensuring no trailing space
+    for(int i=0;i<words.size();i++)
+    {
+        cout<<words[i];
+        if(i<words.size()-1)
+        {
+            cout<<" ";
+        }
+    }
+
+    return 0;
+}

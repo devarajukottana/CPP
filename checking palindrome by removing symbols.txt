@@ -1,0 +1,48 @@
+//the string is a palindrome or not by removing the extra symbols from string
+#include<bits/stdc++.h>
+using namespace std;
+bool isalphanum(char c)
+{
+        return (tolower(c)>='a' && tolower(c)<='z') || (c>='0' && c<='9');
+}
+bool ispalindrome(string s,int len)
+{
+    int start=0;
+    int end=len-1;
+    while(start<end)
+    {
+        if(!isalphanum(s[start]))
+        {
+            start++;
+            continue;
+        }
+        if(!isalphanum(s[end]))
+        {
+            end--;
+            continue;
+        }
+        if(tolower(s[start]) != tolower(s[end]))
+        {
+            return false;
+        }
+        start++;
+        end--;
+    }
+    return true;
+    
+}
+int main()
+{
+    string s;
+    cin>>s;
+    int len=s.length();
+    if(ispalindrome(s,len))
+    {
+        cout<<"it is a palindrome";
+    }
+    else
+    {
+        cout<<"it is not a palindrome";
+    }
+    
+}

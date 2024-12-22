@@ -1,0 +1,28 @@
+//creating thread,join ,sleep_for 
+
+code:
+#include <iostream>
+#include <thread>
+using namespace std;
+void task1() {
+    cout << "Task 1 is running.\n";
+    this_thread::sleep_for(chrono::seconds(2));
+    cout << "Task 1 is done.\n";
+}
+
+void task2() {
+    cout << "Task 2 is running.\n";
+    this_thread::sleep_for(chrono::seconds(1));
+    cout << "Task 2 is done.\n";
+}
+
+int main() {
+    thread t1(task1);
+    thread t2(task2);
+
+    t1.join(); // Main thread waits for `t1` to finish
+    t2.join(); // Main thread waits for `t2` to finish
+
+    cout << "Main thread is done.\n";
+    return 0;
+}

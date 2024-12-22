@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    vector<int>vec;
+    for(int i=0;i<n;i++)
+    {
+        int k;
+        cin>>k;
+        vec.push_back(k);
+    }
+    set<int> seen;//to check the duplicate elements in seen.
+    set<int> duplicates;//to store the duplicates.
+    for(int  i : vec)
+    {
+        if(seen.find(i)!=seen.end())//checks the element not reaches to end of set;
+        {
+            duplicates.insert(i);
+        }
+        else
+        {
+            seen.insert(i);
+        }
+    }
+    for(int i:seen)
+    {
+        cout<<i<<" ";
+    }
+}

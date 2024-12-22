@@ -1,0 +1,17 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int a,b;
+    cin>>a;
+    cin>>b;
+    while(b!=0)
+    {
+        int carry=a & b;//check the carry is there or not;
+        a=a ^ b;//add the bits into the a;
+        b=carry<<1;//b shifts the left by one position;
+        
+    }
+    cout<<"the sum of a and b is "<<a <<endl;
+    return 0;
+}

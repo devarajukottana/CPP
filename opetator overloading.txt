@@ -1,0 +1,36 @@
+#include <iostream>
+using namespace std;
+
+class Geeks {
+private:
+    int real;
+    int img;
+
+public:
+    // Constructor with default arguments
+    Geeks(int r = 0, int i = 0)
+    {
+    real=r;
+    img=i;
+    }
+
+    // Overloaded + operator to add two Geeks objects
+    Geeks operator+(Geeks const& obj) {
+        Geeks re;
+        re.real = real + obj.real;
+        re.img = img + obj.img;
+        return re;
+    }
+
+    // Method to print complex number
+    void print() {
+        cout << "real: " << real << " img: " << img << endl;
+    }
+};
+
+int main() {
+    Geeks c1(3, 4), c2(5, 7);
+    Geeks c3 = c1 + c2; // Using overloaded + operator
+    c3.print(); // Output: real: 8 img: 11
+    return 0;
+}

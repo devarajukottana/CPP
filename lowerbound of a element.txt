@@ -1,0 +1,33 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cout<<"enter the size";
+    cin>>n;
+    cout<<"enter the elements";
+    vector<int>v;
+    for(int i=0;i<n;i++)
+    {
+        int k;
+        cin>>k;
+        v.push_back(k);
+    }
+    cout<<"enter the target";
+    int target;
+    cin>>target;
+    for(int i=0;i<n;i++)
+    {
+        if(v[i]==target)
+        {
+            cout<<"the lowerbound is "<<v[i];
+            break;
+        }
+        else if(v[i]>target)
+        {
+            cout<<"the lowerbound is "<<v[i];
+            break;
+        }
+    }
+    
+}

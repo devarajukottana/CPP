@@ -1,0 +1,39 @@
+//this is the kadenes algorithm  is optimized code to find maxmum subarray sum;
+
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int n;
+    cin>>n;
+    int max_arr[n];
+    int x=0;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    int max_sum=INT_MIN;
+    int current=0;
+    for(int i=0;i<n;i++)
+    {
+        current+=arr[i];
+        max_arr[x]=arr[i];
+        x++;
+        if(current>max_sum)
+        {
+            
+            max_sum=current;
+        }
+        if(current <0)
+        {
+            x=0;
+            current=0;
+        }
+    }
+    for(int i=0;i<x;i++)
+    {
+        cout<<max_arr[i];
+    }
+    cout<<max_sum;
+}

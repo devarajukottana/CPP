@@ -1,0 +1,68 @@
+#include<iostream>
+using namespace std;
+class node
+{
+    public:
+    int data;
+    node* next;
+    node(int val)
+    {
+        data=val;
+        next=NULL;
+    }
+};
+void insertAtEnd(node* &head,int val)
+{
+    node* n=new node(val);
+    if(head==NULL)
+    {
+        head=n;
+        return ;
+    }
+    node* temp=head;
+    while(temp->next !=NULL)
+    {
+        temp=temp->next;
+    }
+    temp->next=n;
+}
+void display(node* head)
+{
+    node* temp=head;
+    while(temp->next != NULL)
+    {
+        cout<<temp->data<<" -> ";
+        temp=temp->next;
+    }
+    cout<<temp->data;
+ 
+}
+//logic
+node* oddandevenindex(node* &head)
+{
+    node* odd=head;
+    node* even=head->next;
+    node* evenhead=head->next;
+    while(even  != NULL && even->next != NULL)
+    {
+        odd->next=odd->next->next;
+        even->next=even->next->next;
+        
+        odd=odd->next;
+        even=even->next;
+    }
+    odd->next=evenhead;
+    return head;
+}
+int main()
+{
+    node* head=NULL;
+    insertAtEnd(head,1);
+    insertAtEnd(head,2);
+    insertAtEnd(head,5);
+    insertAtEnd(head,6);
+    insertAtEnd(head,7);
+    insertAtEnd(head,8);
+    node* temp=oddandevenindex(head);
+    display(head);
+}

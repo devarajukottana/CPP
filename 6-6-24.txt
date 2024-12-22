@@ -1,0 +1,5 @@
+progress bar: it is designed to display the current percent complete for a process.
+example: movie download,files transfer,installation of apps.
+properties  : minimum,maximum.
+Activity indicator: it is nothing but the spinning progress bar.
+example: used in loading the movie.
