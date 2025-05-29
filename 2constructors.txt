@@ -17,6 +17,6 @@ int main()
 int a=10,b=20;
 int m=1,n=2,o=3;
 Employee obj1=Employee(a,b);
-Employee obj2=Employee(m,n,o);
+Employee obj2=Employee(&m,&n,&o);
 return 0;
 }
